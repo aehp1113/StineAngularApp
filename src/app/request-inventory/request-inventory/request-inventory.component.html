@@ -1,0 +1,54 @@
+<p>
+    <mat-toolbar>
+      <span style="margin: 40px;">Requests</span>
+    </mat-toolbar>
+  </p>
+<div style="margin: 50px;">
+<table mat-table [dataSource]="datasource2" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="idRequest">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.idRequest}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="requestedKernelsRequest">
+      <th mat-header-cell *matHeaderCellDef> Kernels Requested </th>
+      <td mat-cell *matCellDef="let element"> {{element.requestedKernelsRequest}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="nameInventory">
+      <th mat-header-cell *matHeaderCellDef> Inventory Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.nameInventory}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="kernelsInventory">
+      <th mat-header-cell *matHeaderCellDef> Kernels Inventory </th>
+      <td mat-cell *matCellDef="let element"> {{element.kernelsInventory}} </td>
+    </ng-container>
+  
+     <!-- Symbol Column -->
+     <ng-container matColumnDef="inventoryFlag">
+        <th mat-header-cell *matHeaderCellDef> Request Availability</th>
+        
+        <td mat-cell *matCellDef="let element"> 
+            <mat-icon *ngIf="element.inventoryFlag" matTooltip="Not available inventory" class="red-icon">error</mat-icon>
+            <mat-icon *ngIf="!element.inventoryFlag" matTooltip="Available inventory" class="gree-icon">check_circle</mat-icon>
+        </td>
+      </ng-container>
+    
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsReq"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsReq;"></tr>
+  </table>
+  
+</div>  
+
+
+  
